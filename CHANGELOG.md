@@ -1,3 +1,9 @@
+## 1.0.0 (2019-10-25)
+
+##### New Features
+
+*  initial commit ([9336a5e0](https://github.com/Typeform/typeform-elements/commit/9336a5e0bfd7b263d96890b8230b3d89bf27d3ec))
+
 ## 1.0.0 (2019-10-21)
 
 ##### New Features
