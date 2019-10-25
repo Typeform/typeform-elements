@@ -1,6 +1,6 @@
 {
   "name": "typeform-elements",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Custom elements for easy use of Typeform",
   "main": "dist/index.cjs.js",
   "browser": "dist/typeform-elements.js",
