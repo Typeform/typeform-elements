@@ -1,0 +1,18 @@
+:host {
+  display: inline-block;
+  height: auto;
+  width: auto;
+  a {
+    text-decoration: none;
+    background-color: rgb(38, 38, 39);
+    border: 0px;
+    border-radius: 2px;
+    color: rgb(255, 255, 255);
+    display: inline-block;
+    line-height: 24px;
+    padding: 8px 16px;
+    transition: all 0.2s ease 0s;
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
+  }
+}

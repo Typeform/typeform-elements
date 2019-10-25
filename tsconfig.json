@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "target": "es2017",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "lib": ["es2017", "dom"],
+    "experimentalDecorators": true,
+    "inlineSourceMap": true,
+    "declaration": true,
+    "paths": {
+      "@shared": ["src/shared/index"],
+      "@shared/*": ["src/shared/*"],
+    },
+    "typeRoots": [
+      "node_modules/@types"
+    ]
+  }
+}
