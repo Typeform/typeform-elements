@@ -31,7 +31,7 @@ import 'typeform-elements';
 
 // or
 
-export { /* Whatever component(s) you want */ } from 'typeform-elements';
+import { /* Whatever component(s) you want */ } from 'typeform-elements';
 ```
 
 ## Elements
