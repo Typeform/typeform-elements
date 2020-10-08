@@ -46,7 +46,7 @@
   "dependencies": {
     "@typeform/embed": "^0.14.1",
     "@webcomponents/webcomponentsjs": "^2.3.0",
-    "lit-element": "^2.2.1"
+    "lit-element": "^2.4.0"
   },
   "devDependencies": {
     "generate-changelog": "1.x.x",
