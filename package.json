@@ -45,7 +45,7 @@
     "README.md"
   ],
   "dependencies": {
-    "@typeform/embed": "^0.33.2",
+    "@typeform/embed": "^0.34.0",
     "@webcomponents/webcomponentsjs": "^2.5.0",
     "lit-element": "^2.4.0"
   },
