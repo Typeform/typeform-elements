@@ -89,7 +89,7 @@ You can use the login element via CDN without needing to import all of the Typef
 ```html
 <typeform-widget url="{typeform_url}"></typeform-widget>
 
-<typeform-popup url="{typeform_url}"></typeform-popup>
+<typeform-popup formId="{typeform_form_id}"></typeform-popup>
 ```
 
 #### Example
@@ -97,37 +97,21 @@ You can use the login element via CDN without needing to import all of the Typef
 ```html
 <typeform-widget url="https://admin.typeform.com/to/PlBzgL"></typeform-widget>
 
-<typeform-popup url="https://admin.typeform.com/to/PlBzgL"></typeform-popup>
+<typeform-popup formId="PlBzgL"></typeform-popup>
 ```
 
-#### `TypeformWidget` (`<typeform-widget>`) Attributes
+#### Attributes
 
 |Attribute|Required|Description|Type|Default|
 |--- |--- |--- |--- |--- |
-|`url`|`true`|URL of Typeform|`String`|`null`|
-|`height`|`false`|Height of form. Accepts size in `%`, `cm`, `em`, `ex`, `in`, `mm`, `pc`, `p`, `px`, `vh`, or `vw`.|`String`|`"500px"`|
-|`width`|`false`|Width of form. Accepts size in `%`, `cm`, `em`, `ex`, `in`, `mm`, `pc`, `p`, `px`, `vh`, or `vw`.|`String`|`"100%"`|
-|`opacity`|`false`|You can make your Typeform's background totally transparent, or opaque. (For example, to have a video as a background)|`Number`|`100`|
-|`button-text`|`false`|The button text that appears on mobile in order to open the Typeform.|`String`|`"Start"`|
-|`hide-scrollbars`|`false`|Hide fixed scrollbars.|`Boolean`|`false`|
-|`hide-footer`|`false`|Hide Typeform footer, that appears showing the progress bar and the navigation buttons.|`Boolean`|`false`|
-|`hide-headers`|`false`|Hide Typeform header, that appears when you have a Question group, or a long question that you need to scroll through to answer, like a Multiple Choice block.|`Boolean`|`false`|
-|`onsubmit`|`false`|Callback function that will be executed right after the Typeform is successfully submitted.|`Function`|`null`|
+|`url`|`false`|URL of Typeform, if no URL provided `formId` must be provided.|`String`|`null`|
+|`formId`|`false`|Form ID of Typeform, if no form ID provided `url` must be provided.|`String`|`null`|
 
-#### `TypeformPopup` (`<typeform-popup>`) Attributes
+All elements have the following attributes: `autoClose`, `buttonText`, `chat`, `height`, `hideFooter`, `hideHeaders`, `opacity`, `width`.
 
-|Attribute|Required|Description|Type|Default|
-|--- |--- |--- |--- |--- |
-|`url`|`true`|URL of Typeform|`String`|`null`|
-|`mode`|`false`|The way of showing the embed. Accepts `"popup"`, `"drawer_left"`, or `"drawer_right"`.|`String`|`"popup"`|
-|`auto-open`|`false`|Your Typeform will launch as soon as your web page is opened|`Boolean`|`false`|
-|`auto-close`|`false`|Time until the embedded Typeform will automatically close after a respondent clicks the Submit button. The default time is 5 seconds. PRO+ users can change the `auto-close` time.|`Number`|`5`|
-|`hide-scrollbars`|`false`|Hide fixed scrollbars.|`Boolean`|`false`|
-|`hide-footer`|`false`|Hide Typeform footer, that appears showing the progress bar and the navigation buttons.|`Boolean`|`false`|
-|`hide-headers`|`false`|Hide Typeform header, that appears when you have a Question group, or a long question that you need to scroll through to answer, like a Multiple Choice block.|`Boolean`|`false`|
-|`drawer-width`|`false`|Specify the width, in pixels, of the drawer (only applies if using `mode` `"drawer_left"` or `"drawer_right"`).|`Number`|`800`|
-|`custom-style`|`false`|Applies custom styling to button element. Use as you would `style` attribute.|`string`|`null`|
-|`onsubmit`|`false`|Callback function that will be executed right after the Typeform is successfully submitted.|`Function`|`null`|
+All elements emit the following events: `submit`.
+
+[Please read more about them here.](https://developer.typeform.com/embed/configuration#available-options)
 
 ## Contributing
 

@@ -1,4 +1,5 @@
-import { LitElement, html, property, customElement, TemplateResult, CSSResult } from 'lit-element';
+import { LitElement, html, TemplateResult, CSSResult } from 'lit';
+import {customElement, property} from 'lit/decorators.js';
 
 import css from '@shared/css';
 
