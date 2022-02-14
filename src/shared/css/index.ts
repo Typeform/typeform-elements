@@ -1,4 +1,4 @@
-import { unsafeCSS, CSSResult } from 'lit-element';
+import { unsafeCSS, CSSResult } from 'lit';
 import style from './style.scss';
 
 export const css = (additionalStyle: string | { [key: string] : any }): CSSResult | string => {

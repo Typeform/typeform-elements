@@ -1,27 +1,45 @@
-import { LitElement, html, property, customElement, TemplateResult } from 'lit-element';
-import typeformEmbed from '@typeform/embed';
-
-import booleanConverter from '@shared/boolean-converter';
+import { LitElement, html, TemplateResult, PropertyValues } from 'lit';
+import { customElement, property } from 'lit/decorators.js';
+import { createWidget } from '@typeform/embed';
+import { exposedOptions } from '@shared/exposed-options';
+import { extractForm } from '@shared/extract-form';
 import validateSize from '@shared/validate-size';
 import { invalidUrlTemplate, validateUrl } from '@shared/validate-url';
 
+import widgetStyle from '@typeform/embed/build/css/widget.css';
+
 const height = '500px';
 const width = '100%';
-const optionalProperties: string[] = ['opacity', 'buttonText', 'hideScrollbars', 'hideFooter', 'hideHeaders'];
 
 @customElement('typeform-widget')
 export class TypeformWidget extends LitElement {
+  // Form details
   @property({ type: String }) url: string;
-  @property({ type: String }) height: string;
-  @property({ type: String }) width: string;
+  @property({ type: String }) formId: string;
+  // Custom properties
+  @property({ type: String }) height = height;
+  @property({ type: String }) width = width;
+  // Exposed options
+  @property({ type: Number }) autoClose: number;
+  @property({ type: String }) buttonText: string;
+  @property({ type: Boolean }) chat: boolean = false;
+  @property({ type: Boolean }) hideFooter: boolean = false;
+  @property({ type: Boolean }) hideHeaders: boolean = false;
   @property({ type: Number }) opacity: number;
-  @property({ type: String, attribute: 'button-text' }) buttonText: string;
-  @property({ type: Boolean, attribute: 'hide-scrollbars', converter: booleanConverter }) hideScrollbars: boolean = false;
-  @property({ type: Boolean, attribute: 'hide-footer', converter: booleanConverter }) hideFooter: boolean = false;
-  @property({ type: Boolean, attribute: 'hide-headers', converter: booleanConverter }) hideHeaders: boolean = false;
 
   createRenderRoot(): Element {
     return this;
+  }
+  
+  connectedCallback() {
+    super.connectedCallback()
+    let headStyle = document.head.querySelector('style#typeform-widget-style');
+    if (!headStyle) {
+      headStyle = document.createElement('style');
+      headStyle.id = 'typeform-widget-style';
+      document.head.append(headStyle);
+    }
+    headStyle.innerHTML = widgetStyle;
   }
 
   render(): TemplateResult {
@@ -36,8 +54,8 @@ export class TypeformWidget extends LitElement {
       invalidUrlTemplate();
   }
 
-  updated(changedProperties: Map<string, string>): void {
-    const keys = [...optionalProperties, 'url'];
+  updated(changedProperties: PropertyValues<any>): void {
+    const keys = [...exposedOptions, 'url'];
     for (let key of keys) {
       if (changedProperties.has(key) && changedProperties.get(key) !== this[key]) {
         return this._renderForm();
@@ -50,11 +68,12 @@ export class TypeformWidget extends LitElement {
   }
 
   private _renderForm(): void {
-    if (!validateUrl(this.url)) return;
+    if (this.url && !validateUrl(this.url)) return;
+    const formId = this.formId ?? extractForm(this.url);
     const div = this.querySelector('div');
-    div.innerHTML = '';
-    const options = { onSubmit: () => this._onSubmit() };
-    optionalProperties.forEach((prop) => (this[prop]) ? options[prop] = this[prop] : null);
-    typeformEmbed.makeWidget(div, this.url, options);
+    div.childNodes.forEach(c => div.removeChild(c));
+    const options = { onSubmit: () => this._onSubmit(), container: div };
+    exposedOptions.forEach((prop) => options[prop] = this[prop]);
+    createWidget(formId, options);
   }
 }
