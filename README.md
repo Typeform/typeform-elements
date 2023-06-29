@@ -1,3 +1,10 @@
+### IMPORTANT NOTE
+
+⚠️ **This library hasn't been maintained for a while so we've decided to deprecate it and archive the repository.** 
+**Please use [embed](https://github.com/Typeform/embed) instead.**
+
+---
+
 # typeform-elements
 
 [![npm version](https://badge.fury.io/js/typeform-elements.svg)](https://badge.fury.io/js/typeform-elements)
